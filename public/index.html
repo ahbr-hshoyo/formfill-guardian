@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b6b57">
+  <title>FormFill Guardian AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="FormFill Guardian AI home">
+      <span class="brand-mark">FG</span>
+      <span><strong>FormFill Guardian AI</strong><small>Public-service form assistant</small></span>
+    </a>
+    <nav><a href="#how">How it works</a><a href="#review">Review</a><a href="#history">History</a></nav>
+    <div class="language-wrap"><label for="language">Language</label><select id="language"><option value="en">English</option><option value="te">తెలుగు</option></select></div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span> CIVIC AI FOR EVERYONE</span>
+        <h1 id="heroTitle">Understand your form.<br><span>Submit with confidence.</span></h1>
+        <p id="heroDesc">Upload a public-service form and its official instructions. FormFill Guardian helps you understand requirements and review missing or unclear information before submission.</p>
+        <a class="primary-btn" href="#upload" id="startBtn">Start a review <span aria-hidden="true">→</span></a>
+        <div class="trust-line"><span>✓</span> Telugu + English <span>✓</span> Source-based review <span>✓</span> Citizen-friendly</div>
+      </div>
+      <div class="hero-card" aria-label="Example checklist preview">
+        <div class="mini-top"><span class="file-icon">▤</span><div><strong>Application review</strong><small>Example preview</small></div><span class="mini-check">✓</span></div>
+        <div class="mini-progress"><span></span></div>
+        <div class="mini-stat-row"><div><strong class="green-text">2</strong><small>OK</small></div><div><strong class="red-text">1</strong><small>Missing</small></div><div><strong class="amber-text">1</strong><small>Unclear</small></div></div>
+        <div class="mini-item"><span class="status-dot ok"></span><div><strong>Identity details</strong><small>Information appears complete</small></div><span class="pill ok-pill">OK</span></div>
+        <div class="mini-item"><span class="status-dot missing"></span><div><strong>Income certificate</strong><small>Required document not confirmed</small></div><span class="pill missing-pill">Missing</span></div>
+        <div class="mini-item"><span class="status-dot unclear"></span><div><strong>Signature clarity</strong><small>Please check the uploaded page</small></div><span class="pill unclear-pill">Unclear</span></div>
+        <p class="sample-note">Illustrative preview — not an actual AI assessment.</p>
+      </div>
+    </section>
+
+    <section class="steps-section" id="how">
+      <div class="section-heading"><span class="eyebrow">SIMPLE BY DESIGN</span><h2>From two documents to a clearer checklist</h2><p>Each step helps you understand what the official instructions ask for.</p></div>
+      <div class="steps-grid">
+        <article class="step-card"><span class="step-number">01</span><div class="step-icon">⇧</div><h3>Upload</h3><p>Add the application form and its official instruction PDF.</p></article>
+        <article class="step-card"><span class="step-number">02</span><div class="step-icon">⌕</div><h3>Understand</h3><p>Match requirements to the fields and documents they refer to.</p></article>
+        <article class="step-card"><span class="step-number">03</span><div class="step-icon">☑</div><h3>Review</h3><p>See OK, Missing, or Unclear items with source evidence.</p></article>
+        <article class="step-card"><span class="step-number">04</span><div class="step-icon">▤</div><h3>Keep a record</h3><p>Review the results and return to previous checks.</p></article>
+      </div>
+    </section>
+
+    <section class="workspace" id="upload">
+      <div class="workspace-heading"><div><span class="eyebrow">YOUR REVIEW WORKSPACE</span><h2>Start with your documents</h2><p>Upload both documents (PDF or photo) to run a review.</p></div><span class="secure-note">▣ Your documents matter</span></div>
+      <div class="upload-grid">
+        <label class="upload-card" for="formPdf">
+          <span class="upload-icon">▤</span><span class="upload-title">Application form <b>*</b></span>
+          <span class="upload-desc">The public-service form you need to complete or check.</span>
+          <span class="drop-area"><strong>＋ Choose your form</strong><small>PDF, JPG or PNG · max 15 MB</small></span>
+          <input id="formPdf" type="file" accept="application/pdf,image/jpeg,image/png,.pdf,.jpg,.jpeg,.png">
+          <span class="file-name" id="formFileName">No file selected</span>
+        </label>
+        <label class="upload-card" for="instructionsPdf">
+          <span class="upload-icon instruction-icon">≡</span><span class="upload-title">Official instructions <b>*</b></span>
+          <span class="upload-desc">The official rules, instructions, or document checklist.</span>
+          <span class="drop-area"><strong>＋ Choose instructions</strong><small>PDF, JPG or PNG · max 15 MB</small></span>
+          <input id="instructionsPdf" type="file" accept="application/pdf,image/jpeg,image/png,.pdf,.jpg,.jpeg,.png">
+          <span class="file-name" id="instructionsFileName">No file selected</span>
+        </label>
+      </div>
+      <div class="upload-bottom"><p><strong>Tip:</strong> Clear, readable PDFs help produce more reliable results. Photos should be well lit and in focus. Analysis can take up to a minute.</p><button id="reviewBtn" class="primary-btn" type="button">Review my form <span>→</span></button></div>
+      <div id="uploadMessage" class="message" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="review-section" id="review">
+      <div class="section-heading left-heading"><span class="eyebrow">REVIEW RESULTS</span><h2>Your checklist</h2><p id="reviewIntro">Upload your documents above and run a review to see results here.</p></div>
+            <div class="results-summary"><div><span class="status-dot ok"></span><strong>OK · <span id="countOk">0</span></strong><span>Information appears complete</span></div><div><span class="status-dot missing"></span><strong>Missing · <span id="countMissing">0</span></strong><span>Required information not found</span></div><div><span class="status-dot unclear"></span><strong>Unclear · <span id="countUnclear">0</span></strong><span>Needs manual verification</span></div></div>
+      <p id="reviewSummary" class="disclaimer"></p>
+      <div class="checklist" id="checklist"><div class="history-empty"><span>▤</span><strong>No results yet</strong><p>Your checklist will appear here after a review.</p></div></div>
+      <p class="disclaimer" id="disclaimerText">Important: this tool provides indicative guidance, not official approval. Verify requirements with the concerned office before submitting your application.</p>
+    </section>
+
+    <section class="history-section" id="history">
+      <div class="workspace-heading"><div><span class="eyebrow">YOUR ACTIVITY</span><h2>Review history</h2><p>Recent reviews are saved in this browser only.</p></div><button class="secondary-btn" id="clearHistory" type="button">Clear history</button></div>
+      <div class="history-empty" id="historyList"><span>▤</span><strong>No reviews prepared yet</strong><p>Run a review to add an entry here.</p></div>
+    </section>
+  </main>
+  <footer><a class="brand footer-brand" href="#home"><span class="brand-mark">FG</span><span><strong>FormFill Guardian AI</strong><small>Complex forms should not require expert language.</small></span></a><p>Student project prototype · Government / Civic domain</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
